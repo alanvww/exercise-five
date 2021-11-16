@@ -6,7 +6,7 @@ function Header() {
 			<div className="Logo">Exercise Five</div>
 			<nav>
 				<a href="/">Login</a>
-				<a href="create">Sign up</a>
+				<a href="/create">Sign up</a>
 				<a href="/user:id">User Profile</a>
 			</nav>
 		</header>
