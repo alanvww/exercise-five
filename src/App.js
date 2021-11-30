@@ -23,7 +23,7 @@ function App() {
 
 	useEffect(() => {
 		// Initialize Firebase
-		const app = initializeApp(FirebaseConfig);
+		initializeApp(FirebaseConfig);
 		const auth = getAuth();
 
 		onAuthStateChanged(auth, (user) => {
