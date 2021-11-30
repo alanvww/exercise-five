@@ -20,6 +20,7 @@ function App() {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [userInformation, setUserInformation] = useState({});
+	const [errors, setErrors] = useState();
 
 	useEffect(() => {
 		// Initialize Firebase
@@ -45,9 +46,11 @@ function App() {
 			.then(() => {
 				setUserInformation({});
 				setLoggedIn(false);
+				setErrors();
 			})
 			.catch((error) => {
 				console.warn(error);
+				setErrors(error);
 			});
 	}
 
@@ -57,6 +60,7 @@ function App() {
 		<>
 			{/* <> is <React.Fragment> */}
 			<Header logout={logout} loggedIn={loggedIn} />
+			{errors && <p className="Error PageWrapper">{errors}</p>}
 			<Router>
 				<Routes>
 					<Route
@@ -66,6 +70,7 @@ function App() {
 								<Login
 									setLoggedIn={setLoggedIn}
 									setUserInformation={setUserInformation}
+									setErrors={setErrors}
 								/>
 							) : (
 								<Navigate to={`/user/${userInformation.uid}`} />
@@ -89,6 +94,7 @@ function App() {
 								<CreateUser
 									setLoggedIn={setLoggedIn}
 									setUserInformation={setUserInformation}
+									setErrors={setErrors}
 								/>
 							) : (
 								<Navigate to={`/user/${userInformation.uid}`} />
