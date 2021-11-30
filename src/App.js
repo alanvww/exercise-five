@@ -8,7 +8,6 @@ import {
 import { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import { getAnalytics } from 'firebase/analytics';
 
 //Page Imports
 import Header from './components/Header';
@@ -25,8 +24,6 @@ function App() {
 	useEffect(() => {
 		// Initialize Firebase
 		const app = initializeApp(FirebaseConfig);
-		const analytics = getAnalytics(app);
-
 		const auth = getAuth();
 
 		onAuthStateChanged(auth, (user) => {
